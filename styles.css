@@ -1,0 +1,22 @@
+
+#container {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
+    width: 144px;
+    height: 144px;
+}
+
+.square{
+    height: 5px;
+    width: 5px;
+    background: gray;
+    border: 2px solid black;
+}
+
+
+.hover{
+    height: 5px;
+    width: 5px;
+    background: pink;
+    border: 2px solid black;
+}
