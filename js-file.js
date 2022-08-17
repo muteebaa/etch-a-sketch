@@ -17,12 +17,18 @@ function createGrid(size){
     changeColour();
 }
 
+
+// prompt user to input grid size
 function gridSize(){
     let size = prompt("Please enter width");
     
-    if (size != null) {
-       console.log(size);
+    while (size >= 100){
+        alert("Must be less than 100!");
+        size = prompt("Please enter width");
+    }
 
+    if (size != null && size < 100) {
+       console.log(size);
 
        while (container.hasChildNodes()) {
             container.removeChild(container.firstChild);
