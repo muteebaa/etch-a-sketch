@@ -43,9 +43,10 @@ function changeColour(){
     const squares = document.querySelectorAll('.square');
 
     squares.forEach((square) => {
-        square.addEventListener('mouseover', () => {
-            square.classList.add('hover');
-        });
+        square.addEventListener('mouseover', 
+        square.addEventListener('click', () => {
+            square.classList.add('hover');})
+        )
     });
 }
 
