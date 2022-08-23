@@ -55,11 +55,31 @@ function changeColour() {
     });
 };
 
+const body = document.querySelector('body');
+
+const btnDiv = document.querySelector('#buttons');
+
+// buttons to change colour/erase
+const colour = document.createElement('span');
+colour.textContent = "colour";
+btnDiv.appendChild(colour);
+let colorInput = document.createElement('input');
+colorInput.type = 'color';
+colorInput.id = 'color';
+btnDiv.appendChild(colorInput);
+
+const clearBtn = document.createElement('button');
+clearBtn.textContent = "clear";
+btnDiv.appendChild(clearBtn);
+
+const eraseBtn = document.createElement('button');
+eraseBtn.textContent = "eraser";
+eraseBtn.classList.add('eraser');
+btnDiv.appendChild(eraseBtn);
+
 createGrid(Math.pow(16,2));
 
 // button to prompt user for grid size
-const body = document.querySelector('body');
-
 const button = document.createElement('button');
 button.textContent = "Select grid size";
 body.appendChild(button);
@@ -68,6 +88,10 @@ button.addEventListener('click', gridSize);
 
 
 
+let colourSelected = document.querySelector('#color');
+let hex = document.querySelector('#hex');
+
+colourSelected.addEventListener("input", () => {let color = colourSelected.value});
 
 /*
 * below is code to experiemnt with colour changing

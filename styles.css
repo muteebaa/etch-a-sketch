@@ -1,25 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Niconne&display=swap');
 
-
+@import url('https://fonts.googleapis.com/css2?family=Crushed&family=Niconne&display=swap');
 
 body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url('wood.jpg');
+   /* background-image: url('wood.jpg'); */
+    background-color: #17BEBB;
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-header{
-    height: 50px;
+#buttons{
+    font-family: 'Crushed';
+    font-weight: 400;
+    font-size: 48px;
+    color: #FFE7D2;
+}
 
+#color {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+	background-color: transparent;
+	width: 60px;
+	height: 60px;
+	border: none;
+}
+
+#color::-webkit-color-swatch{
+    border-radius: 100%;
 }
 
 #sketch-pad{
-    background-color: #db1313;
+    background: radial-gradient(125.51% 62.67% at 50.04% 49.93%, #FFCDCD 0%, #FF0000 100%);
+    mix-blend-mode: normal;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -27,6 +44,20 @@ header{
     height: 750px;
     width: 1200px;
     border-radius: 50px;
+}
+
+button{
+    background-color: transparent;
+    font-family: 'Crushed';
+    font-weight: 400;
+    font-size: 48px;
+    color: #FFE7D2;
+    border: none;
+}
+
+button:hover{
+    font-size: 55px;
+    cursor: pointer;
 }
 
 h1{
@@ -44,9 +75,8 @@ h1{
 }
 
 .square{  
-    border: 2px solid black;
+    border: 2px solid lightgray;
     background: white;
-    border-radius: 10px;
 }
 
 .hover{
