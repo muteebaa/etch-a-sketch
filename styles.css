@@ -15,10 +15,12 @@ body{
 }
 
 #buttons{
+    display: flex;
+    gap: 100px;
     font-family: 'Crushed';
     font-weight: 400;
     font-size: 48px;
-    color: #FFE7D2;
+    padding: 30px;
 }
 
 #color {
@@ -34,6 +36,12 @@ body{
     border-radius: 100%;
 }
 
+#color:hover {
+    width: 67px;
+	height: 67px;
+    cursor: pointer;
+}
+
 #sketch-pad{
     background: radial-gradient(125.51% 62.67% at 50.04% 49.93%, #FFCDCD 0%, #FF0000 100%);
     mix-blend-mode: normal;
@@ -44,6 +52,7 @@ body{
     height: 750px;
     width: 1200px;
     border-radius: 50px;
+    margin: 50px;
 }
 
 button{
@@ -51,7 +60,7 @@ button{
     font-family: 'Crushed';
     font-weight: 400;
     font-size: 48px;
-    color: #FFE7D2;
+    color: #FFEE96;
     border: none;
 }
 

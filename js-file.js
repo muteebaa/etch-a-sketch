@@ -13,7 +13,7 @@ function createGrid(size){
     
     container.style["grid-template-columns"] = `repeat(${Math.sqrt(size)}, auto)`;
     //changeColour();
-    changeColour();
+   
 }
 
 
@@ -37,32 +37,22 @@ function gridSize(){
     }
 }
 
-// change colour upon hover
-function changeColour() {
-    const boxes = document.querySelectorAll(".square")
-    boxes.forEach((box) => { 
-        
-        box.addEventListener("mousedown", () => {
-            box.classList.add('hover');
-           
-            const boxes2 = document.querySelectorAll(".square")
-
-            boxes2.forEach((box2) => { box2.addEventListener('mouseenter', () => {
-                box2.classList.add('hover');});
-                
-            });
-        });
-    });
-};
+// changes colour of box
+function colorChange(e, color, box){
+    if(e.buttons == 1){
+      box.style.backgroundColor = color;
+    }
+}
 
 const body = document.querySelector('body');
 
 const btnDiv = document.querySelector('#buttons');
 
 // buttons to change colour/erase
+/*
 const colour = document.createElement('span');
 colour.textContent = "colour";
-btnDiv.appendChild(colour);
+btnDiv.appendChild(colour); */
 let colorInput = document.createElement('input');
 colorInput.type = 'color';
 colorInput.id = 'color';
@@ -87,62 +77,22 @@ body.appendChild(button);
 button.addEventListener('click', gridSize);
 
 
-
+// getting the colour picked by the user
 let colourSelected = document.querySelector('#color');
-let hex = document.querySelector('#hex');
 
-colourSelected.addEventListener("input", () => {let color = colourSelected.value});
+let color = "black";
 
-/*
-* below is code to experiemnt with colour changing
-* - i want to make it so that the colour of a square changes 
-*   when the mouse is clicked and dragged simultaneously
-*/
+colourSelected.addEventListener("input", () => {  
+     color = colourSelected.value;
+});
 
-/*
-function changeColour(){
-    const squares = document.querySelectorAll('.square');
 
-    squares.forEach((square) => {
-        square.addEventListener('mouseover', 
-        square.addEventListener('click', () => {
-            square.classList.add('hover');})
-        )
-    });
-}
+const boxes = document.querySelectorAll(".square");
 
-function checkClicked(){
-    squares.forEach((square) => {
-        square.addEventListener('click', () => {
-            square.classList.add('hover');})
-        })
-};*/
+boxes.forEach((box) => { 
+    box.onmousemove = function(e) {
+        colorChange(e, color, box)
+    }
 
-/*
-function clickCheck(box){
-    let test = false;
-    box.addEventListener("mousedown", () => {
-        box.classList.add('hover');
-        
-        const boxes2 = document.querySelectorAll(".square")
-
-        boxes2.forEach((box2) => { box2.addEventListener('mouseenter', () => {
-            box2.addEventListener("mousedown", () => {test =true; });
-            
-            if (test==true){
-                console.log("ZFGSBCB");
-                box2.classList.add('hover');
-            }
-        
-            })})
-        })
-;}
-
-function cChange() {
-    const boxes = document.querySelectorAll(".square")
-    console.log("test");
-    boxes.forEach((box) => { clickCheck(box)});
- 
-}; */
-
+})
 
