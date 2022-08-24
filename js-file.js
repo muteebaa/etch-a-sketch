@@ -38,10 +38,8 @@ function gridSize(){
 }
 
 // changes colour of box
-function colorChange(e, color, box){
-    if(e.buttons == 1){
+function colorChange(color, box){
       box.style.backgroundColor = color;
-    }
 }
 
 const body = document.querySelector('body');
@@ -86,13 +84,18 @@ colourSelected.addEventListener("input", () => {
      color = colourSelected.value;
 });
 
-
 const boxes = document.querySelectorAll(".square");
-
 boxes.forEach((box) => { 
     box.onmousemove = function(e) {
-        colorChange(e, color, box)
+        if(e.buttons == 1)
+            colorChange(color, box)
     }
-
 })
 
+clearBtn.addEventListener("click", () => {
+    boxes.forEach((box) => { 
+        colorChange("white", box)
+        })
+})
+
+eraseBtn.addEventListener("click", ()=> {color = "white";})
