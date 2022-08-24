@@ -1,5 +1,5 @@
 const container = document.querySelector('#container');
-
+let boxes;
 
 // creating grid
 function createGrid(size){
@@ -12,8 +12,9 @@ function createGrid(size){
     }
     
     container.style["grid-template-columns"] = `repeat(${Math.sqrt(size)}, auto)`;
-    //changeColour();
-   
+
+   boxes = getBoxes();
+   console.log(boxes)
 }
 
 
@@ -21,8 +22,8 @@ function createGrid(size){
 function gridSize(){
     let size = prompt("Please enter width");
     
-    while (size >= 100){
-        alert("Must be less than 100!");
+    while (size >= 100 ||size <= 0 ){
+        alert("Must be from  1 - 99!");
         size = prompt("Please enter width");
     }
 
@@ -33,13 +34,18 @@ function gridSize(){
             container.removeChild(container.firstChild);
         }
 
-        createGrid(Math.pow(size,2));
+       return size;
     }
 }
 
 // changes colour of box
 function colorChange(color, box){
       box.style.backgroundColor = color;
+}
+
+function getBoxes(){
+    console.log("lol");
+    return document.querySelectorAll(".square");
 }
 
 const body = document.querySelector('body');
@@ -65,15 +71,20 @@ eraseBtn.textContent = "eraser";
 eraseBtn.classList.add('eraser');
 btnDiv.appendChild(eraseBtn);
 
-createGrid(Math.pow(16,2));
+let size = Math.pow(16,2);
+createGrid(size);
 
 // button to prompt user for grid size
+
 const button = document.createElement('button');
 button.textContent = "Select grid size";
 body.appendChild(button);
 
-button.addEventListener('click', gridSize);
+button.addEventListener('click', ()=>{size = gridSize()
+    createGrid(Math.pow(size,2))
+    ;});
 
+console.log(size)
 
 // getting the colour picked by the user
 let colourSelected = document.querySelector('#color');
@@ -84,18 +95,26 @@ colourSelected.addEventListener("input", () => {
      color = colourSelected.value;
 });
 
-const boxes = document.querySelectorAll(".square");
-boxes.forEach((box) => { 
-    box.onmousemove = function(e) {
-        if(e.buttons == 1)
-            colorChange(color, box)
-    }
-})
-
-clearBtn.addEventListener("click", () => {
+function edit(){
     boxes.forEach((box) => { 
-        colorChange("white", box)
-        })
-})
+        box.onmousemove = function(e) {
+            if(e.buttons == 1)
+                colorChange(color, box)
+        }
+    })
+    
+    clearBtn.addEventListener("click", () => {
+        boxes.forEach((box) => { 
+            colorChange("white", box)
+            })
+    })
+    
+    eraseBtn.addEventListener("click", ()=> {color = "white";})
+}
 
-eraseBtn.addEventListener("click", ()=> {color = "white";})
+//const boxes = document.querySelectorAll(".square");
+
+//https://stackoverflow.com/questions/33725092/click-and-drag-over-multiple-divs
+
+container.addEventListener("mouseenter", edit)
+
